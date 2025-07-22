@@ -1,0 +1,14 @@
+# this is a configuration file where we can specify tools which will be automatically installed
+
+# conda env update -f environment.yml
+name: Pizzeria
+channel:
+ - conda-forge
+dependencies:
+  - python=3.11
+  - requests
+  - pip:
+    - pytest
+    - allure-pytest
+    - flake8
+    - pytest-playwright
