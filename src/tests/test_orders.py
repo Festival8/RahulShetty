@@ -15,7 +15,7 @@ with open('../data/user_creds.json') as creds_file:
 
 @pytest.mark.parametrize("user_creds", user_creds_list)
 def test_order_setup(playwright: Playwright, browser_instance, user_creds):
-    # Create order with API
+    # Create order using API
     api_util = APIUtils()
     order_id = api_util.create_oder(playwright, user_creds)
 
