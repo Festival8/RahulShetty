@@ -42,16 +42,6 @@ def test_search_for_product(playwright: Playwright, browser_instance, data):
 
     login_page = LoginPage(browser_instance)
     dashboard_page = login_page.login(email=email, password=password)
-    expect(browser_instance.locator('//div[@class="card-body"]/h5')).to_have_count(3)
+    dashboard_page.verify_items_count(products_count=3)
+    dashboard_page.verify_product_is_searchable(enter_data_for_search=data)
 
-    search_field = browser_instance.get_by_placeholder("search").nth(1)
-    search_field.fill(data)
-    search_field.press("Enter")
-    time.sleep(2)
-
-    cards = browser_instance.locator('//div[@class="card-body"]/h5')
-    cards_count = cards.count()
-
-    for i_card_num in range(cards_count):
-        card = cards.nth(i_card_num)
-        expect(card).to_contain_text(data)
