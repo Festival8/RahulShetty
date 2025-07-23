@@ -1,11 +1,10 @@
 """
 test case: 1
 1. search product
-2. Add product to cart
+DONE
 
 test case: 2
 1. set up min and max price product
-2. Add product to cart
 
 test case: 3
 1. set up category
@@ -20,11 +19,8 @@ test case: 5
 2. Add product to card
 """
 import json
-import logging
-import time
-
 import pytest
-from playwright.sync_api import Playwright, expect
+from playwright.sync_api import Playwright
 
 from src.pageObject.login_page import LoginPage
 
