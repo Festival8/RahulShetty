@@ -33,8 +33,13 @@ with open('../data/user_creds.json') as creds_file:
     test_data = json.load(creds_file)
     user_creds_dict = test_data["user_creds"][0]
 
+with open('../data/products.json') as products_file:
+    # load will convert json file into python onject
+    products_data = json.load(products_file)
+    products_dict = products_data["products"]
 
-@pytest.mark.parametrize("data", ["ZARA COAT 3", "ADIDAS ORIGINAL"])
+
+@pytest.mark.parametrize("data", products_dict)
 def test_search_for_product(playwright: Playwright, browser_instance, data):
     # login
     email = user_creds_dict["email"]
@@ -42,6 +47,6 @@ def test_search_for_product(playwright: Playwright, browser_instance, data):
 
     login_page = LoginPage(browser_instance)
     dashboard_page = login_page.login(email=email, password=password)
-    dashboard_page.verify_items_count(products_count=3)
+    dashboard_page.verify_items_count(products_count=len(products_dict))
     dashboard_page.verify_product_is_searchable(enter_data_for_search=data)
 
