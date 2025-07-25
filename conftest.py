@@ -1,7 +1,7 @@
 import logging.config
 from os import path
 import pytest
-from playwright.sync_api import Playwright, expect
+from playwright.sync_api import Playwright
 
 # Here the connection to the logs of our logging.ini file
 log_file_path = path.join(path.dirname(path.abspath(__file__)), 'logging.ini')
